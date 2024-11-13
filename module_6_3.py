@@ -1,28 +1,46 @@
-class Animal:
-    live = True
-    sound = None
-    _DEGREE_OF_DANGER = 0
+class Horse:
 
-    def __init__(self, _cords, speed):
-        _cords = [0, 0, 0]
-        self.speed = speed
+    def __init__(self):
+        self.x_distance = 0
+        self.sound = 'Frrrr'
 
 
-    def move(self, dx, dy, dz):
-        _cords = [self.dx, self.dy, self.dz]
-     #  ? где множителем будет являться speed
-        if dz < 0:
-            print("It's too deep, i can't dive :(")
-     # измененния не вносятся
+    def run(self, dx):
+        self.x_distance += dx
 
-    def get_cords(self)
-        print(f'X: {_cords[0]}, Y: {_cords[1]}, Z: <{_cords[1]}')
+class Eagle:
+    def __init__(self):
+        self.y_distance = 0
+        self.sound = 'I train, eat, sleep, and repeat'
 
-    def attack(self)
-        if _DEGREE_OF_DANGER < 5:
-            (print("Sorry, i'm peaceful :)")
-        else:
-            print("Be careful, i'm attacking you 0_0")
+    def fly(self, dy):
+        self.y_distance += dy
 
-class Bird(Animal):
-    beak = True 
+class Pegasus(Horse, Eagle):
+    def __init__(self):
+        Horse.__init__(self)
+        Eagle.__init__(self)
+
+       # super().run(10)
+        # super().fly(10)
+
+    def move(self, dx, dy):
+        super().__init__(self.dx, self.dy)
+        super().run(10)
+        super().fly(10)
+
+    def get_pos(self):
+        return (self.x_distance, self.y_distance)
+
+
+    def voice(self):
+        print(self.sound)
+
+
+p1 = Pegasus()
+print(p1.get_pos())
+p1.move(10, 15)
+print(p1.get_pos())
+p1.move(-5, 20)
+print(p1.get_pos())
+p1.voice()
