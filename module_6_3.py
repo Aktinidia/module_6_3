@@ -21,13 +21,11 @@ class Pegasus(Horse, Eagle):
         Horse.__init__(self)
         Eagle.__init__(self)
 
-       # super().run(10)
-        # super().fly(10)
+
 
     def move(self, dx, dy):
-        super().__init__(self.dx, self.dy)
-        super().run(10)
-        super().fly(10)
+        super().run(dx)
+        super().fly(dy)
 
     def get_pos(self):
         return (self.x_distance, self.y_distance)
